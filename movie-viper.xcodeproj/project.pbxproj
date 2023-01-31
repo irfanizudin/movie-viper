@@ -13,6 +13,15 @@
 		2E3300452988E2A40064F153 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E3300432988E2A40064F153 /* Main.storyboard */; };
 		2E3300472988E2A50064F153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E3300462988E2A50064F153 /* Assets.xcassets */; };
 		2E33004A2988E2A50064F153 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E3300482988E2A50064F153 /* LaunchScreen.storyboard */; };
+		2E3300532988E4C90064F153 /* GenreListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300522988E4C90064F153 /* GenreListProtocol.swift */; };
+		2E3300552988E4E50064F153 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300542988E4E50064F153 /* GenreListView.swift */; };
+		2E3300572988E4F30064F153 /* GenreListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300562988E4F30064F153 /* GenreListPresenter.swift */; };
+		2E3300592988E4FE0064F153 /* GenreListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300582988E4FE0064F153 /* GenreListInteractor.swift */; };
+		2E33005B2988E5070064F153 /* GenreListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33005A2988E5070064F153 /* GenreListRouter.swift */; };
+		2E33005F2988EB230064F153 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33005E2988EB230064F153 /* Constants.swift */; };
+		2E3300612988EBA40064F153 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300602988EBA40064F153 /* APIKey.swift */; };
+		2E3300632988EDAB0064F153 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300622988EDAB0064F153 /* Genre.swift */; };
+		2E3300662988F1920064F153 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3300652988F1920064F153 /* GenreCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		2E3300462988E2A50064F153 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E3300492988E2A50064F153 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E33004B2988E2A50064F153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E3300522988E4C90064F153 /* GenreListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListProtocol.swift; sourceTree = "<group>"; };
+		2E3300542988E4E50064F153 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
+		2E3300562988E4F30064F153 /* GenreListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListPresenter.swift; sourceTree = "<group>"; };
+		2E3300582988E4FE0064F153 /* GenreListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListInteractor.swift; sourceTree = "<group>"; };
+		2E33005A2988E5070064F153 /* GenreListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListRouter.swift; sourceTree = "<group>"; };
+		2E33005E2988EB230064F153 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2E3300602988EBA40064F153 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		2E3300622988EDAB0064F153 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		2E3300652988F1920064F153 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,9 @@
 		2E33003C2988E2A40064F153 /* movie-viper */ = {
 			isa = PBXGroup;
 			children = (
+				2E33005D2988EB050064F153 /* Constants */,
+				2E33005C2988E5120064F153 /* Entity */,
+				2E3300512988E4A00064F153 /* GenreList */,
 				2E33003D2988E2A40064F153 /* AppDelegate.swift */,
 				2E33003F2988E2A40064F153 /* SceneDelegate.swift */,
 				2E3300412988E2A40064F153 /* ViewController.swift */,
@@ -65,6 +86,44 @@
 				2E33004B2988E2A50064F153 /* Info.plist */,
 			);
 			path = "movie-viper";
+			sourceTree = "<group>";
+		};
+		2E3300512988E4A00064F153 /* GenreList */ = {
+			isa = PBXGroup;
+			children = (
+				2E3300642988F03C0064F153 /* Views */,
+				2E3300522988E4C90064F153 /* GenreListProtocol.swift */,
+				2E3300562988E4F30064F153 /* GenreListPresenter.swift */,
+				2E3300582988E4FE0064F153 /* GenreListInteractor.swift */,
+				2E33005A2988E5070064F153 /* GenreListRouter.swift */,
+			);
+			path = GenreList;
+			sourceTree = "<group>";
+		};
+		2E33005C2988E5120064F153 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2E3300622988EDAB0064F153 /* Genre.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		2E33005D2988EB050064F153 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2E33005E2988EB230064F153 /* Constants.swift */,
+				2E3300602988EBA40064F153 /* APIKey.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2E3300642988F03C0064F153 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2E3300652988F1920064F153 /* GenreCollectionViewCell.swift */,
+				2E3300542988E4E50064F153 /* GenreListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +197,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E3300592988E4FE0064F153 /* GenreListInteractor.swift in Sources */,
+				2E3300572988E4F30064F153 /* GenreListPresenter.swift in Sources */,
 				2E3300422988E2A40064F153 /* ViewController.swift in Sources */,
+				2E3300632988EDAB0064F153 /* Genre.swift in Sources */,
+				2E3300662988F1920064F153 /* GenreCollectionViewCell.swift in Sources */,
+				2E3300532988E4C90064F153 /* GenreListProtocol.swift in Sources */,
+				2E3300612988EBA40064F153 /* APIKey.swift in Sources */,
 				2E33003E2988E2A40064F153 /* AppDelegate.swift in Sources */,
+				2E3300552988E4E50064F153 /* GenreListView.swift in Sources */,
+				2E33005B2988E5070064F153 /* GenreListRouter.swift in Sources */,
 				2E3300402988E2A40064F153 /* SceneDelegate.swift in Sources */,
+				2E33005F2988EB230064F153 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +361,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,8 +388,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
