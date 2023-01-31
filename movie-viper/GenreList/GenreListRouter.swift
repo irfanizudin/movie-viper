@@ -27,7 +27,10 @@ class GenreListRouter: GenreListRouterProtocol {
     }
     
     func pushToDiscoverGenre(genre: Genre, view: UIViewController) {
-        
+        let movieListVC = MovieListRouter.createMovieListModule(genre: genre)
+        movieListVC.genreId = genre.id
+        movieListVC.title = "\(genre.name) Movies"
+        view.navigationController?.pushViewController(movieListVC, animated: true)
     }
     
     

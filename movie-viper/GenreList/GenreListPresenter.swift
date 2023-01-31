@@ -29,7 +29,7 @@ class GenreListPresenter: GenreListPresenterProtocol {
     }
     
     func tapDiscoverGenre(genre: Genre, view: UIViewController) {
-        
+        router?.pushToDiscoverGenre(genre: genre, view: view)
     }
     
     

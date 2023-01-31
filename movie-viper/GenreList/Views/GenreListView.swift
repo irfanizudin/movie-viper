@@ -39,7 +39,7 @@ class GenreListViewController: UIViewController, GenreListViewProtocol {
         view.backgroundColor = .systemBackground
         title = "Movie Genres"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -63,5 +63,11 @@ extension GenreListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         cell.genreTitle.text = genres[indexPath.row].name
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let genre = genres[indexPath.row]
+        presenter?.tapDiscoverGenre(genre: genre, view: self)
     }
 }

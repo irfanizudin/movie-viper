@@ -9,4 +9,5 @@ import Foundation
 
 class Constants {
     static let baseURL = "https://api.themoviedb.org/3"
+    static let baseImageURL = "https://image.tmdb.org/t/p/w500"
 }

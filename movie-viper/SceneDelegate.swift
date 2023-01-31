@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let initialVC = GenreListRouter.createGenreListModule()
         let navVC = UINavigationController(rootViewController: initialVC)
+        navVC.navigationBar.tintColor = .white
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navVC
