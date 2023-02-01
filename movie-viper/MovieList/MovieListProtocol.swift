@@ -25,7 +25,7 @@ protocol MovieListPresenterProtocol {
 
 protocol MovieListInteractorProtocol {
     var presenter: MovieListPresenterProtocol? { get set }
-    var genre: Genre? { get set }
+//    var genre: Genre? { get set }
     func getMoviesByGenreId(id: Int, page: Int)
 }
 

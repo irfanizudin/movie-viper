@@ -26,7 +26,10 @@ class MovieDetailRouter: MovieDetailRouterProtocol {
     }
     
     func presentUserReview(movie: Movie, view: UIViewController) {
-        
+        let movieReviewVC = MovieReviewRouter.createMovieReviewModule(movie: movie)
+        movieReviewVC.id = movie.id ?? 0
+        let navVC = UINavigationController(rootViewController: movieReviewVC)
+        view.present(navVC, animated: true)
     }
     
     func presentWatchTrailer(movie: Movie, view: UIViewController) {

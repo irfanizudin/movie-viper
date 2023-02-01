@@ -29,7 +29,7 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
     }
     
     func tapUserReviewButton(movie: Movie, view: UIViewController) {
-        
+        router?.presentUserReview(movie: movie, view: view)
     }
     
     func tapWatchTrailerButton(movie: Movie, view: UIViewController) {

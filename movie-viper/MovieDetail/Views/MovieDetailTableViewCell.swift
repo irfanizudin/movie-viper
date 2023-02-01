@@ -70,7 +70,8 @@ class MovieDetailTableViewCell: UITableViewCell {
             
             releaseDate.leadingAnchor.constraint(equalTo: titleMovie.leadingAnchor),
             releaseDate.topAnchor.constraint(equalTo: voteAverage.bottomAnchor, constant: 10),
-            releaseDate.trailingAnchor.constraint(equalTo: titleMovie.trailingAnchor)
+            releaseDate.trailingAnchor.constraint(equalTo: titleMovie.trailingAnchor),
+            releaseDate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
     

@@ -62,8 +62,13 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        movieDetailTableView.frame = view.bounds
         loadingIndicator.frame = view.bounds
+        movieDetailTableView.frame = view.bounds
+    }
+    
+    @objc func presentMovieReview() {
+        guard let movie = movie else { return }
+        presenter?.tapUserReviewButton(movie: movie, view: self)
     }
 }
 
@@ -77,10 +82,19 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
         headerView?.configurePosterImage(url: movie?.poster_path ?? "")
+        headerView?.reviewButton.addTarget(self, action: #selector(presentMovieReview), for: .touchUpInside)
         cell.titleMovie.text = movie?.title ?? movie?.original_title
         cell.descriptionMovie.text = movie?.overview
         cell.voteAverage.text = "Rating: \(Double(round(10 * (movie?.vote_average ?? 0)) / 10) )/10"
         cell.releaseDate.text = "Release Date: \(movie?.release_date ?? "xxxx-xx-xx")"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 400
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
