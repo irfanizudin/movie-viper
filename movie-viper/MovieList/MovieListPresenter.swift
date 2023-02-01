@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 class MovieListPresenter: MovieListPresenterProtocol {
+    
     var view: MovieListViewProtocol?
     
     var interactor: MovieListInteractorProtocol?
@@ -29,6 +31,11 @@ class MovieListPresenter: MovieListPresenterProtocol {
             view?.updateWithError(error: error.localizedDescription)
         }
     }
+    
+    func tapMovieDetail(movie: Movie, view: UIViewController) {
+        router?.pushToMovieDetail(movie: movie, view: view)
+    }
+
     
     
 }

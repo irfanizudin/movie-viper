@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 class MovieListRouter: MovieListRouterProtocol {
+    
     static func createMovieListModule(genre: Genre) -> MovieListViewController {
         let view = MovieListViewController()
         let presenter = MovieListPresenter()
@@ -24,5 +26,11 @@ class MovieListRouter: MovieListRouterProtocol {
         return view
     }
     
+    func pushToMovieDetail(movie: Movie, view: UIViewController) {
+        let movieDetailVC = MovieDetailRouter.createMovieDetailModule(movie: movie)
+        movieDetailVC.id = movie.id ?? 0
+        view.navigationController?.pushViewController(movieDetailVC, animated: true)
+    }
+
     
 }

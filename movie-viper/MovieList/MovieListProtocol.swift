@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MovieListViewProtocol {
     var presenter: MovieListPresenterProtocol? { get set }
@@ -19,6 +20,7 @@ protocol MovieListPresenterProtocol {
     var router: MovieListRouterProtocol? { get set }
     func viewDidLoadMovieListWithGenreId(id: Int, page: Int)
     func interactorDidGetMovieListData(result: Result<MovieResponse, Error>)
+    func tapMovieDetail(movie: Movie, view: UIViewController)
 }
 
 protocol MovieListInteractorProtocol {
@@ -29,4 +31,5 @@ protocol MovieListInteractorProtocol {
 
 protocol MovieListRouterProtocol {
     static func createMovieListModule(genre: Genre) -> MovieListViewController
+    func pushToMovieDetail(movie: Movie, view: UIViewController)
 }

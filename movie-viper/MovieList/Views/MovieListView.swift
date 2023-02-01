@@ -22,13 +22,23 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
         layout.minimumInteritemSpacing = 0
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        collection.isHidden = true
         return collection
+    }()
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let loading = UIActivityIndicatorView(style: .large)
+        loading.startAnimating()
+        return loading
     }()
     
     func updateWithData(data: MovieResponse) {
         DispatchQueue.main.async { [weak self] in
             self?.movies.append(contentsOf: data.results ?? [])
             self?.totalPages = data.total_pages ?? 0
+            self?.loadingIndicator.stopAnimating()
+            self?.loadingIndicator.isHidden = true
+            self?.movieListCollectionView.isHidden = false
             self?.movieListCollectionView.reloadData()
         }
     }
@@ -46,6 +56,7 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
         
         
         view.addSubview(movieListCollectionView)
+        view.addSubview(loadingIndicator)
         movieListCollectionView.delegate = self
         movieListCollectionView.dataSource = self
         
@@ -56,6 +67,7 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         movieListCollectionView.frame = view.bounds
+        loadingIndicator.frame = view.bounds
     }
 }
 
@@ -74,6 +86,12 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        movieListCollectionView.deselectItem(at: indexPath, animated: true)
+        let movie = movies[indexPath.row]
+        presenter?.tapMovieDetail(movie: movie, view: self)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
