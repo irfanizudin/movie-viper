@@ -12,7 +12,10 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
     var presenter: MovieListPresenterProtocol?
     var genreId: Int?
     var movies: [Movie] = []
-    
+    var page: Int = 1
+    var totalPages: Int = 0
+    var fetch: Bool = true
+
     private let movieListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 10, height: 200)
@@ -22,9 +25,10 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
         return collection
     }()
     
-    func updateWithData(data: [Movie]) {
+    func updateWithData(data: MovieResponse) {
         DispatchQueue.main.async { [weak self] in
-            self?.movies = data
+            self?.movies.append(contentsOf: data.results ?? [])
+            self?.totalPages = data.total_pages ?? 0
             self?.movieListCollectionView.reloadData()
         }
     }
@@ -46,7 +50,7 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
         movieListCollectionView.dataSource = self
         
         guard let genreId = genreId else { return }
-        presenter?.viewDidLoadMovieListWithGenreId(id: genreId)
+        presenter?.viewDidLoadMovieListWithGenreId(id: genreId, page: page)
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,7 +59,7 @@ class MovieListViewController: UIViewController, MovieListViewProtocol {
     }
 }
 
-extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
@@ -70,5 +74,23 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        let scrollViewHeight = scrollView.frame.size.height
+        let tableHeight = movieListCollectionView.contentSize.height - 100 - scrollViewHeight
+        if position > tableHeight {
+            if fetch {
+                print("fetch")
+                page = page + 1
+                presenter?.viewDidLoadMovieListWithGenreId(id: genreId ?? 0, page: page)
+                print("fetch page \(page)")
+                fetch = false
+            }
+        }
+        if page < totalPages {
+            fetch = true
+        }
     }
 }

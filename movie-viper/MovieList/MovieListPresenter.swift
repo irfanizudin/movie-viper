@@ -14,14 +14,17 @@ class MovieListPresenter: MovieListPresenterProtocol {
     
     var router: MovieListRouterProtocol?
     
-    func viewDidLoadMovieListWithGenreId(id: Int) {
-        interactor?.getMoviesByGenreId(id: id)
+    var isPaginating: Bool = false
+    
+    
+    func viewDidLoadMovieListWithGenreId(id: Int, page: Int) {
+        interactor?.getMoviesByGenreId(id: id, page: page)
     }
     
-    func interactorDidGetMovieListData(result: Result<[Movie], Error>) {
+    func interactorDidGetMovieListData(result: Result<MovieResponse, Error>) {
         switch result {
-        case.success(let movies):
-            view?.updateWithData(data: movies)
+        case.success(let movieResponse):
+            view?.updateWithData(data: movieResponse)
         case.failure(let error):
             view?.updateWithError(error: error.localizedDescription)
         }

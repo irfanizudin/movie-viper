@@ -9,6 +9,7 @@ import Foundation
 
 struct MovieResponse: Codable {
     let results: [Movie]?
+    let total_pages: Int?
 }
 
 struct Movie: Codable {
