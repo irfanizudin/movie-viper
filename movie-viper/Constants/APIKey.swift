@@ -10,4 +10,5 @@ import Foundation
 // This file should be on the .gitignore
 class APIKey {
     static let tmdbAPIKey = "081d10082bc7d4d375db5abd23f7936a"
+    static let youtubeAPIKey = "AIzaSyAciW2nAbFrSaIeGnRDOAGKWk3M2YaFou0"
 }

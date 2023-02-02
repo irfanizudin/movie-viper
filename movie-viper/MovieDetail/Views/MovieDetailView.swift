@@ -70,6 +70,11 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
         guard let movie = movie else { return }
         presenter?.tapUserReviewButton(movie: movie, view: self)
     }
+    
+    @objc func presentMovieTrailer() {
+        guard let movie = movie else { return }
+        presenter?.tapWatchTrailerButton(movie: movie, view: self)
+    }
 }
 
 extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -83,6 +88,8 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
         }
         headerView?.configurePosterImage(url: movie?.poster_path ?? "")
         headerView?.reviewButton.addTarget(self, action: #selector(presentMovieReview), for: .touchUpInside)
+        headerView?.trailerButton.addTarget(self, action: #selector(presentMovieTrailer), for: .touchUpInside)
+        
         cell.titleMovie.text = movie?.title ?? movie?.original_title
         cell.descriptionMovie.text = movie?.overview
         cell.voteAverage.text = "Rating: \(Double(round(10 * (movie?.vote_average ?? 0)) / 10) )/10"

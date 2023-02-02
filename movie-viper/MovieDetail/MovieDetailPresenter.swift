@@ -33,7 +33,7 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
     }
     
     func tapWatchTrailerButton(movie: Movie, view: UIViewController) {
-        
+        router?.presentWatchTrailer(movie: movie, view: view)
     }
     
     

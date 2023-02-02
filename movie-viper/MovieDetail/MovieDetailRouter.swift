@@ -33,7 +33,10 @@ class MovieDetailRouter: MovieDetailRouterProtocol {
     }
     
     func presentWatchTrailer(movie: Movie, view: UIViewController) {
-        
+        let movieTrailerVC = MovieTrailerRouter.createMovieTrailerModule(movie: movie)
+        movieTrailerVC.query = movie.title ?? movie.original_title ?? ""
+        let navVC = UINavigationController(rootViewController: movieTrailerVC)
+        view.present(navVC, animated: true)
     }
     
     
